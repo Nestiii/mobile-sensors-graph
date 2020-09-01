@@ -28,8 +28,12 @@ class App extends Component {
         }
     }
 
+    getData = () => fetch('http://localhost:3000/getData')
+        .then(res => res.json())
+        .catch(err => console.log(err))
+
     componentDidMount() {
-        setInterval(() => this.setState({
+        /*setInterval(() => this.setState({
             acc: {
                 date: new Date(),
                 accx: Math.random(),
@@ -48,9 +52,9 @@ class App extends Component {
                 obeta: Math.random(),
                 ogamma: Math.random()
             }
-        }), 1000);
-        /*setInterval(() =>
-            fetch('http://localhost:3000/getData')
+        }), 1000);*/
+        setInterval(() =>
+            this.getData()
                 .then((res) => {
                     this.setState({
                         acc: {
@@ -72,9 +76,8 @@ class App extends Component {
                             ogamma: res.data.ogamma
                         }
                     })
-                })
-                .catch((err) => console.log(err)),
-        1000);*/
+                }),
+        1000);
     }
 
     render() {
