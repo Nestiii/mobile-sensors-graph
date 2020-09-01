@@ -7,10 +7,6 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: {
-                date: new Date(),
-                Car: 0
-            },
             acc: {
                 date: new Date(),
                 accx: 0,
@@ -34,10 +30,6 @@ class App extends Component {
 
     componentDidMount() {
         setInterval(() => this.setState({
-            data: {
-                date: new Date(),
-                Car: Math.random()
-            },
             acc: {
                 date: new Date(),
                 accx: Math.random(),
@@ -57,6 +49,32 @@ class App extends Component {
                 ogamma: Math.random()
             }
         }), 1000);
+        /*setInterval(() =>
+            fetch('http://localhost:3000/getData')
+                .then((res) => {
+                    this.setState({
+                        acc: {
+                            date: new Date(),
+                            accx: res.data.accx,
+                            accy: res.data.accy,
+                            accz: res.data.accz
+                        },
+                        rr: {
+                            date: new Date(),
+                            rralpha: res.data.rralpha,
+                            rrbeta: res.data.rrbeta,
+                            rrgamma: res.data.rrgamma
+                        },
+                        o: {
+                            date: new Date(),
+                            oalpha: res.data.oalpha,
+                            obeta: res.data.obeta,
+                            ogamma: res.data.ogamma
+                        }
+                    })
+                })
+                .catch((err) => console.log(err)),
+        1000);*/
     }
 
     render() {
